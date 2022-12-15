@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import React, { useMemo, useState, useEffect } from 'react'
 import { Themed, jsx } from 'theme-ui'
-import { Grid, Button } from '@theme-ui/components'
+import { Grid, Button, Container } from '@theme-ui/components'
 import OptionPicker from '@components/common/OptionPicker'
 import { NextSeo } from 'next-seo'
 import { useUI } from '@components/ui/context'
@@ -172,6 +172,15 @@ const ProductBox: React.FC<Props> = ({
           </Button>
         </div>
       </Grid>
+
+      {/* From the Treatment Room */}
+      <div className="bg-ocean-100 py-20">
+        <div className='text-center text-white flex flex-col gap-4 max-w-2xl mx-auto '>
+          <span>• FROM THE TREATMENT ROOM •</span>
+          <p>Apply with toner, or mix with your favorite facial oil for the complete balance of brightening and hydration. This anti-aging serum is also safe to use around the eyes.</p>
+        </div>
+      </div>
+      {/* From the Treatment Room End */}
     </React.Fragment>
   )
 }

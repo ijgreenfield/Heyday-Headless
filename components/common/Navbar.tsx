@@ -56,23 +56,22 @@ const Navbar: FC = () => {
           sx={{
             display: ['none', 'none', 'flex'],
             flexBasis: 0,
+            flex: 1,
             minWidth: 240,
-            justifyContent: 'space-evenly',
+            justifyContent: 'start',
           }}
         >
           {navigationLinks?.map((link, index) => (
-            <Themed.a
-              key={index}
-              sx={{ padding: 10, minWidth: 90 }}
-              as={Link}
-              href={link.link}
-            >
-              {link.title}
-            </Themed.a>
+            <div key={index} className='mr-8'>
+              <Link href={link.link}>
+                {link.title}
+              </Link>
+            </div>
           ))}
         </Themed.div>
         <Themed.div
           sx={{
+            flex: 1,
             transform: 'translateX(-50%)',
             left: '50%',
             position: 'absolute',
@@ -120,6 +119,7 @@ const Navbar: FC = () => {
         <Themed.div
           sx={{
             display: 'flex',
+            flex: 1,
             minWidth: 140,
             width: '100%',
             justifyContent: ['space-between', 'flex-end'],

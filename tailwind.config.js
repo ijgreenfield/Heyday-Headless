@@ -16,8 +16,7 @@ module.exports = {
         '8xl': '1920px',
       },
       colors: {
-        primary: 'var(--primary)',
-        'primary-2': 'var(--primary-2)',
+        primary: '#000',
         secondary: 'var(--secondary)',
         'secondary-2': 'var(--secondary-2)',
         hover: 'var(--hover)',
@@ -40,6 +39,7 @@ module.exports = {
         blue: 'var(--blue)',
         green: 'var(--green)',
         red: 'var(--red)',
+        'ocean-100': '#105368'
       },
       textColor: {
         base: 'var(--text-base)',
