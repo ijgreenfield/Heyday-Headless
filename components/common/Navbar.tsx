@@ -39,19 +39,8 @@ const Navbar: FC = () => {
         data={{ theme }}
         model="announcement-bar"
       />
-      <Themed.div
-        as="header"
-        sx={{
-          margin: `0 auto`,
-          maxWidth: 1920,
-          py: 2,
-          px: 2,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          position: 'relative',
-        }}
-      >
+      <header className='my-0 mx-auto relative'>
+        <div className='flex justify-between items-center px-12 py-5'>
         <Themed.div
           sx={{
             display: ['none', 'none', 'flex'],
@@ -128,7 +117,8 @@ const Navbar: FC = () => {
           <Searchbar />
           <UserNav />
         </Themed.div>
-      </Themed.div>
+        </div>
+      </header>
     </React.Fragment>
   )
 }

@@ -14,6 +14,8 @@ import {
 } from '@lib/shopify/storefront-data-hooks/src/utils/product'
 import { ImageCarousel, LoadingDots } from '@components/ui'
 import ProductLoader from './ProductLoader'
+import { Disclosure } from '@headlessui/react'
+import { ChevronUpIcon } from '@heroicons/react/20/solid'
 
 interface Props {
   className?: string
@@ -85,6 +87,25 @@ const ProductBox: React.FC<Props> = ({
         )
     )
 
+  const ingredients = [
+    {
+      title: "Blah",
+      answer: "A stable form of vitamin C, a powerful antioxidant with brightening capabilities."
+    },
+    {
+      title: "Blah",
+      answer: "A stable form of vitamin C, a powerful antioxidant with brightening capabilities."
+    },
+    {
+      title: "Blah",
+      answer: "A stable form of vitamin C, a powerful antioxidant with brightening capabilities."
+    },
+    {
+      title: "Blah",
+      answer: "A stable form of vitamin C, a powerful antioxidant with brightening capabilities."
+    },
+  ]
+
   return (
     <React.Fragment>
       {renderSeo && (
@@ -106,78 +127,99 @@ const ProductBox: React.FC<Props> = ({
           }}
         />
       )}
-      <Grid gap={4} columns={[1, 2]}>
-        <div>
-          <div
-            sx={{
-              border: '1px solid gray',
-              padding: 2,
-              marginBottom: 2,
-            }}
-          >
-            <ImageCarousel
-              showZoom
-              alt={title}
-              width={1050}
-              height={1050}
-              priority
-              onThumbnailClick={(index) => {
-                if (images[index]?.color) {
-                  setColor(images[index].color)
-                }
-              }}
-              images={allImages?.length > 0 ? allImages: [{
-                  src: `https://via.placeholder.com/1050x1050`,
-                }]}
-            ></ImageCarousel>
+      <div className='px-12 mb-12'>
+        <div className='grid grid-cols-2 gap-24'>
+          <div className=''>
+            <div>
+              <ImageCarousel
+                showZoom
+                alt={title}
+                width={1050}
+                height={1050}
+                priority
+                onThumbnailClick={(index) => {
+                  if (images[index]?.color) {
+                    setColor(images[index].color)
+                  }
+                }}
+                images={allImages?.length > 0 ? allImages: [{
+                    src: `https://via.placeholder.com/1050x1050`,
+                  }]}
+              ></ImageCarousel>
+            </div>
+          </div>
+          <div sx={{ display: 'flex', flexDirection: 'column' }}>
+            <span sx={{ mt: 0, mb: 2 }}>
+              <Themed.h1>{title}</Themed.h1>
+              <Themed.h4 aria-label="price" sx={{ mt: 0, mb: 2 }}>
+                {getPrice(variant.priceV2.amount, variant.priceV2.currencyCode)}
+              </Themed.h4>
+            </span>
+            <div dangerouslySetInnerHTML={{ __html: description! }} />
+            <div>
+              <Grid columns={2}>
+                {colors?.length && (
+                  <OptionPicker
+                    key="Color"
+                    name="Color"
+                    options={colors}
+                    selected={color}
+                    onChange={(event) => setColor(event.target.value)}
+                  />
+                )}
+                {sizes?.length && (
+                  <OptionPicker
+                    key="Size"
+                    name="Size"
+                    options={sizes}
+                    selected={size}
+                    onChange={(event) => setSize(event.target.value)}
+                  />
+                )}
+              </Grid>
+            </div>
+            <div className='mb-4'>
+              <Button
+                name="add-to-cart"
+                disabled={loading}
+                onClick={addToCart}
+              >
+                Add to Cart {loading && <LoadingDots />}
+              </Button>
+            </div>
+
+            <div>
+              {ingredients.map(ingredient => (
+                <div key={ingredient.title}>
+                  <Disclosure>
+                  {({ open }) => (
+                    <>
+                    <Disclosure.Button className="flex w-full justify-between border-b border-b-blackpx-4 py-2 text-left text-sm font-medium focus:outline-none focus-visible:ring focus-visible:ring-opacity-75">
+                      <span>{ingredient.title}</span>
+                      <ChevronUpIcon
+                        className={`${
+                          open ? 'rotate-180 transform' : ''
+                        } h-5 w-5 text-purple-500`}
+                      />
+                    </Disclosure.Button>
+                    <Disclosure.Panel className="text-gray-500">
+                      {ingredient.answer}
+                    </Disclosure.Panel>
+                    </>
+                  )}
+                  </Disclosure>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-        <div sx={{ display: 'flex', flexDirection: 'column' }}>
-          <span sx={{ mt: 0, mb: 2 }}>
-            <Themed.h1>{title}</Themed.h1>
-            <Themed.h4 aria-label="price" sx={{ mt: 0, mb: 2 }}>
-              {getPrice(variant.priceV2.amount, variant.priceV2.currencyCode)}
-            </Themed.h4>
-          </span>
-          <div dangerouslySetInnerHTML={{ __html: description! }} />
-          <div>
-            <Grid padding={2} columns={2}>
-              {colors?.length && (
-                <OptionPicker
-                  key="Color"
-                  name="Color"
-                  options={colors}
-                  selected={color}
-                  onChange={(event) => setColor(event.target.value)}
-                />
-              )}
-              {sizes?.length && (
-                <OptionPicker
-                  key="Size"
-                  name="Size"
-                  options={sizes}
-                  selected={size}
-                  onChange={(event) => setSize(event.target.value)}
-                />
-              )}
-            </Grid>
-          </div>
-          <Button
-            name="add-to-cart"
-            disabled={loading}
-            sx={{ margin: 2, display: 'block' }}
-            onClick={addToCart}
-          >
-            Add to Cart {loading && <LoadingDots />}
-          </Button>
-        </div>
-      </Grid>
+      </div>
 
       {/* From the Treatment Room */}
       <div className="bg-ocean-100 py-20">
         <div className='text-center text-white flex flex-col gap-4 max-w-2xl mx-auto '>
           <span>• FROM THE TREATMENT ROOM •</span>
-          <p>Apply with toner, or mix with your favorite facial oil for the complete balance of brightening and hydration. This anti-aging serum is also safe to use around the eyes.</p>
+          <p className='text-2xl font-medium'>Apply with toner, or mix with your favorite facial oil for the complete balance of brightening and hydration. This anti-aging serum is also safe to use around the eyes.</p>
         </div>
       </div>
       {/* From the Treatment Room End */}

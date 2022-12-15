@@ -48,6 +48,8 @@
     "@builder.io/react": "^1.1.47",
     "@builder.io/utils": "^1.0.3",
     "@builder.io/widgets": "^1.2.19",
+    "@headlessui/react": "^1.7.6",
+    "@heroicons/react": "^2.0.13",
     "@netlify/plugin-nextjs": "^3.1.0-experimental-odb.2",
     "@tailwindcss/ui": "^0.6.2",
     "@testing-library/react-hooks": "^3.7.0",
