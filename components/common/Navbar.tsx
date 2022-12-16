@@ -34,13 +34,13 @@ const Navbar: FC = () => {
 
   return (
     <React.Fragment>
-      <BuilderComponent
+      {/*<BuilderComponent
         content={announcement}
         data={{ theme }}
         model="announcement-bar"
-      />
-      <header className='my-0 mx-auto relative'>
-        <div className='flex justify-between items-center px-12 py-5'>
+      />*/}
+      <header className='my-0 mx-auto relative bg-white'>
+        <div className='flex justify-between items-center bg-white z-50 px-3 py-5 fixed top-0 left-0 right-0'>
         <Themed.div
           sx={{
             display: ['none', 'none', 'flex'],

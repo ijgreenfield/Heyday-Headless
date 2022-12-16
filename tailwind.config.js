@@ -39,7 +39,9 @@ module.exports = {
         blue: 'var(--blue)',
         green: 'var(--green)',
         red: 'var(--red)',
-        'ocean-100': '#105368'
+        'ocean-100': '#105368',
+        'shell-50': '#FAF1EC',
+        'shell-20': '#FDFAF8',
       },
       textColor: {
         base: 'var(--text-base)',

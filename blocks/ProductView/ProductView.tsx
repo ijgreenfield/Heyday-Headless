@@ -1,6 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import React, { useMemo, useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Themed, jsx } from 'theme-ui'
 import { Grid, Button, Container } from '@theme-ui/components'
 import OptionPicker from '@components/common/OptionPicker'
@@ -22,6 +23,7 @@ interface Props {
   children?: any
   product: ShopifyBuy.Product
   renderSeo?: boolean
+  vendor?: string
   description?: string
   title?: string
 }
@@ -29,6 +31,7 @@ interface Props {
 const ProductBox: React.FC<Props> = ({
   product,
   renderSeo,
+  vendor = product.vendor,
   description = product.description,
   title = product.title,
 }) => {
@@ -127,8 +130,8 @@ const ProductBox: React.FC<Props> = ({
           }}
         />
       )}
-      <div className='px-12 mb-12'>
-        <div className='grid grid-cols-2 gap-24'>
+      <div className='md:px-12 mb-12'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           <div className=''>
             <div>
               <ImageCarousel
@@ -148,16 +151,16 @@ const ProductBox: React.FC<Props> = ({
               ></ImageCarousel>
             </div>
           </div>
-          <div sx={{ display: 'flex', flexDirection: 'column' }}>
-            <span sx={{ mt: 0, mb: 2 }}>
-              <Themed.h1>{title}</Themed.h1>
-              <Themed.h4 aria-label="price" sx={{ mt: 0, mb: 2 }}>
+          <div className='flex flex-col px-3'>
+            <span className='mt-0 mb-2'>
+              <span className='uppercase'>{vendor}</span>
+              <h1 className='text-2xl font-bold leading-normal'>{title}</h1>
+              <h4 aria-label="price" className='mt-1 mb-1 text-xl font-semibold'>
                 {getPrice(variant.priceV2.amount, variant.priceV2.currencyCode)}
-              </Themed.h4>
+              </h4>
             </span>
-            <div dangerouslySetInnerHTML={{ __html: description! }} />
-            <div>
-              <Grid columns={2}>
+            <div className='mb-3'>
+              <div>
                 {colors?.length && (
                   <OptionPicker
                     key="Color"
@@ -176,44 +179,82 @@ const ProductBox: React.FC<Props> = ({
                     onChange={(event) => setSize(event.target.value)}
                   />
                 )}
-              </Grid>
+              </div>
             </div>
-            <div className='mb-4'>
-              <Button
+            <div className='mb-4 w-full'>
+              <button
                 name="add-to-cart"
                 disabled={loading}
                 onClick={addToCart}
+                className='py-3 px-3 bg-ocean-100 text-white rounded-lg font-semibold w-full'
               >
                 Add to Cart {loading && <LoadingDots />}
-              </Button>
+              </button>
             </div>
-
+            
             <div>
-              {ingredients.map(ingredient => (
-                <div key={ingredient.title}>
-                  <Disclosure>
-                  {({ open }) => (
-                    <>
-                    <Disclosure.Button className="flex w-full justify-between border-b border-b-blackpx-4 py-2 text-left text-sm font-medium focus:outline-none focus-visible:ring focus-visible:ring-opacity-75">
-                      <span>{ingredient.title}</span>
-                      <ChevronUpIcon
-                        className={`${
-                          open ? 'rotate-180 transform' : ''
-                        } h-5 w-5 text-purple-500`}
-                      />
-                    </Disclosure.Button>
-                    <Disclosure.Panel className="text-gray-500">
-                      {ingredient.answer}
-                    </Disclosure.Panel>
-                    </>
-                  )}
-                  </Disclosure>
-                </div>
-              ))}
+              <div className='mb-3'>
+                <div dangerouslySetInnerHTML={{ __html: description! }} />
+              </div>
+              <div>
+                {ingredients.map(ingredient => (
+                  <div key={ingredient.title}>
+                    <Disclosure>
+                    {({ open }) => (
+                      <>
+                      <Disclosure.Button className="flex w-full justify-between border-b border-b-blackpx-4 py-2 text-left text-sm font-medium focus:outline-none focus-visible:ring focus-visible:ring-opacity-75">
+                        <span>{ingredient.title}</span>
+                        <ChevronUpIcon
+                          className={`${
+                            open ? 'rotate-180 transform' : ''
+                          } h-5 w-5 text-purple-500`}
+                        />
+                      </Disclosure.Button>
+                      <Disclosure.Panel className="text-gray-500">
+                        {ingredient.answer}
+                      </Disclosure.Panel>
+                      </>
+                    )}
+                    </Disclosure>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* How We Use It */}
+      <div className='bg-shell-50'>
+        <div className='px-3'>
+          <div>
+            <span>How We Use It</span>
+            <h1>Morning and Night</h1>
+            <p>Apply a few drops to clean, toned skin, focusing on areas that you feel need a bit of extra attention.</p>
+          </div>
+          <hr />
+          <div>
+            <span>Complete Your Routine</span>
+            <div>
+              <span>Before</span>
+              <div className='bg-white rounded-lg'>
+                {/*<div>
+                  <Image 
+                    src=''
+                    alt=''
+                    width={}
+                  />
+                </div>*/}
+                <div>
+                  <p>Image Skincare</p>
+                  <p>Vital C Hydrating Facial Cleanser</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* How We Use It */}
 
       {/* From the Treatment Room */}
       <div className="bg-ocean-100 py-20">
