@@ -11,6 +11,9 @@ module.exports = {
     ],
   },
   theme: {
+    fontFamily: {
+      'serif': ['Playfair Display', 'serif']
+    },
     extend: {
       maxWidth: {
         '8xl': '1920px',

@@ -92,20 +92,20 @@ const ProductBox: React.FC<Props> = ({
 
   const ingredients = [
     {
-      title: "Blah",
+      title: "Magnesium Phosphate",
       answer: "A stable form of vitamin C, a powerful antioxidant with brightening capabilities."
     },
     {
-      title: "Blah",
-      answer: "A stable form of vitamin C, a powerful antioxidant with brightening capabilities."
+      title: "Sodium Hyaluronate",
+      answer: "A humectant with excellent hydrating properties that revitalize skin texture."
     },
     {
-      title: "Blah",
-      answer: "A stable form of vitamin C, a powerful antioxidant with brightening capabilities."
+      title: "Palmitoyl Pentapeptide",
+      answer: "A peptide that stimulates collagen synthesis while protecting against collagen degradation for firmer, more supple skin."
     },
     {
-      title: "Blah",
-      answer: "A stable form of vitamin C, a powerful antioxidant with brightening capabilities."
+      title: "Full Ingredient List",
+      answer: "Aqua/Water/Eau, Glycerin, Aloe Barbadensis Leaf Juice, Citrus Aurantium Dulcis (Orange) Oil, Caprylic/Capric Triglyceride, Limonene, C12-15 Alkyl Benzoate, Cetearyl Olivate, Sorbitan Olivate, Imperata Cylindrica Root Extract, Magnesium Ascorbyl Phosphate, Ppg-12/Smdi Copolymer, Tetrahexyldecyl Ascorbate, Glyceryl Stearate, Peg-100 Stearate, Cetyl Alcohol, Dimethicone, Di-Ppg-2 Myreth-10 Adipate, Stearic Acid, Phenoxyethanol, Ethylhexyl Methoxycinnamate, Panthenol, Prunus Amygdalus Dulcis (Sweet Almond) Oil, Xanthan Gum, Caprylyl Glycol, Butylene Glycol, Tocopheryl Acetate, Glycine Soja (Soybean) Sterols, Linoleic Acid, Phospholipids, Simmondsia Chinensis (Jojoba) Seed Oil, Squalane, Propylene Glycol, Ethylhexylglycerin, Glucosamine Hcl,"
     },
   ]
 
@@ -153,8 +153,8 @@ const ProductBox: React.FC<Props> = ({
           </div>
           <div className='flex flex-col px-3'>
             <span className='mt-0 mb-2'>
-              <span className='uppercase'>{vendor}</span>
-              <h1 className='text-2xl font-bold leading-normal'>{title}</h1>
+              <span className='uppercase text-xs'>{vendor}</span>
+              <h1 className='text-2xl font-normal leading-normal font-serif'>{title}</h1>
               <h4 aria-label="price" className='mt-1 mb-1 text-xl font-semibold'>
                 {getPrice(variant.priceV2.amount, variant.priceV2.currencyCode)}
               </h4>
@@ -193,7 +193,7 @@ const ProductBox: React.FC<Props> = ({
             </div>
             
             <div>
-              <div className='mb-3'>
+              <div className='mb-3 text-sm'>
                 <div dangerouslySetInnerHTML={{ __html: description! }} />
               </div>
               <div>
@@ -226,28 +226,44 @@ const ProductBox: React.FC<Props> = ({
 
       {/* How We Use It */}
       <div className='bg-shell-50'>
-        <div className='px-3'>
-          <div>
-            <span>How We Use It</span>
+        <div className='px-3 py-6'>
+          <div className=''> 
+            <span className='text-sm font-semibold'>How We Use It</span>
             <h1>Morning and Night</h1>
-            <p>Apply a few drops to clean, toned skin, focusing on areas that you feel need a bit of extra attention.</p>
+            <p className='text-sm'>Apply a few drops to clean, toned skin, focusing on areas that you feel need a bit of extra attention.</p>
           </div>
-          <hr />
+          <hr className='my-3'/>
           <div>
-            <span>Complete Your Routine</span>
-            <div>
-              <span>Before</span>
-              <div className='bg-white rounded-lg'>
-                {/*<div>
+            <span className='text-sm font-semibold'>Complete Your Routine</span>
+            <div className='mb-3'>
+              <span className='uppercase text-xs mb-2'>Before</span>
+              <div className='flex bg-white rounded-lg overflow-hidden'>
+                <div className='relative h-20 w-20'>
                   <Image 
-                    src=''
-                    alt=''
-                    width={}
+                    src='https://res.cloudinary.com/dinn28die/image/upload/v1671132334/cld-sample-5.jpg'
+                    alt='product image'
+                    layout='fill'
                   />
-                </div>*/}
-                <div>
-                  <p>Image Skincare</p>
-                  <p>Vital C Hydrating Facial Cleanser</p>
+                </div>
+                <div className='flex flex-col justify-center px-3'>
+                  <p className='text-xs uppercase'>Image Skincare</p>
+                  <p className='text-sm font-semibold'>Vital C Hydrating Facial Cleanser</p>
+                </div>
+              </div>
+            </div>
+            <div className='mb-3'>
+              <span className='uppercase text-xs mb-2'>After</span>
+              <div className='flex bg-white rounded-lg overflow-hidden'>
+                <div className='relative h-20 w-20'>
+                  <Image 
+                    src='https://res.cloudinary.com/dinn28die/image/upload/v1671132334/cld-sample-5.jpg'
+                    alt='product image'
+                    layout='fill'
+                  />
+                </div>
+                <div className='flex flex-col justify-center px-3'>
+                  <p className='text-xs uppercase'>Image Skincare</p>
+                  <p className='text-sm font-semibold'>Vital C Hydrating Facial Cleanser</p>
                 </div>
               </div>
             </div>
@@ -257,10 +273,10 @@ const ProductBox: React.FC<Props> = ({
       {/* How We Use It */}
 
       {/* From the Treatment Room */}
-      <div className="bg-ocean-100 py-20">
+      <div className="bg-ocean-100 py-20 px-3">
         <div className='text-center text-white flex flex-col gap-4 max-w-2xl mx-auto '>
           <span>• FROM THE TREATMENT ROOM •</span>
-          <p className='text-2xl font-medium'>Apply with toner, or mix with your favorite facial oil for the complete balance of brightening and hydration. This anti-aging serum is also safe to use around the eyes.</p>
+          <p className='text-lg font-medium'>Apply with toner, or mix with your favorite facial oil for the complete balance of brightening and hydration. This anti-aging serum is also safe to use around the eyes.</p>
         </div>
       </div>
       {/* From the Treatment Room End */}

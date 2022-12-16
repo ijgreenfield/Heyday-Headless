@@ -15,7 +15,7 @@ const UserNav: FC<Props> = ({ className, children, ...props }) => {
   const { toggleSidebar } = useUI()
 
   return (
-    <div className='flex items-center gap-2' onClick={toggleSidebar} aria-label="Cart">
+    <div className='flex items-center gap-4' onClick={toggleSidebar} aria-label="Cart">
       <UserIcon className='h-6 w-6' />
       <ShoppingBagIcon className='h-6 w-6' />
     </div>
