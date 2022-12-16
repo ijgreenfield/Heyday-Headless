@@ -60,11 +60,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
             }
           />
         </div>
-        <div sx={{ textAlign: 'center' }}>
-          <Themed.h2 sx={{ mt: 4, mb: 0, fontSize: 14 }}>
+        <div className='flex flex-col py-3'>
+          <span className='uppercase text-xs'>{product.vendor}</span>
+          <h2 className='text-sm'>
             {product.title}
-          </Themed.h2>
-          <Text sx={{ fontSize: 12, mb: 2 }}>{price}</Text>
+          </h2>
+          <p className='mb-2'>{price}</p>
         </div>
       </Link>
     </Card>

@@ -62,15 +62,15 @@ const CollectionPreview: FC<Props> = ({
           }}
         />
       )}
-      <div sx={{ display: 'flex', flexDirection: 'column' }}>
+      <div className='flex flex-col px-3'>
         <span sx={{ mt: 0, mb: 2 }}>
           <Themed.h1>{collection.title}</Themed.h1>
         </span>
         <div dangerouslySetInnerHTML={{ __html: collection.description! }} />
       </div>
-      <Themed.div sx={{ p: 5 }}>
+      <div>
         <ProductGrid {...productGridOptions} products={products} />
-      </Themed.div>
+      </div>
     </Themed.div>
   )
 }
