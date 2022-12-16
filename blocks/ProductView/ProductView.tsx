@@ -153,9 +153,9 @@ const ProductBox: React.FC<Props> = ({
           </div>
           <div className='flex flex-col px-3'>
             <span className='mt-0 mb-2'>
-              <span className='uppercase text-xs'>{vendor}</span>
-              <h1 className='text-2xl font-normal leading-normal font-serif'>{title}</h1>
-              <h4 aria-label="price" className='mt-1 mb-1 text-xl font-semibold'>
+              <span className='uppercase text-sm font-sans'>{vendor}</span>
+              <h1 className='text-2xl font-normal leading-normal font-sans'>{title}</h1>
+              <h4 aria-label="price" className='mt-1 mb-1 text-xl font-semibold font-sans'>
                 {getPrice(variant.priceV2.amount, variant.priceV2.currencyCode)}
               </h4>
             </span>
@@ -186,19 +186,19 @@ const ProductBox: React.FC<Props> = ({
                 name="add-to-cart"
                 disabled={loading}
                 onClick={addToCart}
-                className='py-3 px-3 bg-ocean-100 text-white rounded-lg font-semibold w-full'
+                className='py-3 px-3 bg-ocean-100 text-white rounded-lg font-semibold w-full font-sans'
               >
                 Add to Cart {loading && <LoadingDots />}
               </button>
             </div>
             
             <div>
-              <div className='mb-3 text-sm'>
+              <div className='mb-3 text-sm font-sans'>
                 <div dangerouslySetInnerHTML={{ __html: description! }} />
               </div>
               <div>
                 {ingredients.map(ingredient => (
-                  <div key={ingredient.title}>
+                  <div key={ingredient.title} className='font-sans'>
                     <Disclosure>
                     {({ open }) => (
                       <>
@@ -207,7 +207,7 @@ const ProductBox: React.FC<Props> = ({
                         <ChevronUpIcon
                           className={`${
                             open ? 'rotate-180 transform' : ''
-                          } h-5 w-5 text-purple-500`}
+                          } h-5 w-5 text-black`}
                         />
                       </Disclosure.Button>
                       <Disclosure.Panel className="text-gray-500">
@@ -225,18 +225,18 @@ const ProductBox: React.FC<Props> = ({
       </div>
 
       {/* How We Use It */}
-      <div className='bg-shell-50'>
+      <div className='bg-shell-50 font-sans'>
         <div className='px-3 py-6'>
           <div className=''> 
-            <span className='text-sm font-semibold'>How We Use It</span>
-            <h1>Morning and Night</h1>
+            <span className='text-sm font-semibold font-sans'>How We Use It</span>
+            <h1 className='text-xl'>Morning and Night</h1>
             <p className='text-sm'>Apply a few drops to clean, toned skin, focusing on areas that you feel need a bit of extra attention.</p>
           </div>
           <hr className='my-3'/>
           <div>
             <span className='text-sm font-semibold'>Complete Your Routine</span>
             <div className='mb-3'>
-              <span className='uppercase text-xs mb-2'>Before</span>
+              <span className='uppercase text-sm mb-2'>Before</span>
               <div className='flex bg-white rounded-lg overflow-hidden'>
                 <div className='relative h-20 w-20'>
                   <Image 
@@ -252,7 +252,7 @@ const ProductBox: React.FC<Props> = ({
               </div>
             </div>
             <div className='mb-3'>
-              <span className='uppercase text-xs mb-2'>After</span>
+              <span className='uppercase text-sm mb-2'>After</span>
               <div className='flex bg-white rounded-lg overflow-hidden'>
                 <div className='relative h-20 w-20'>
                   <Image 
@@ -273,7 +273,7 @@ const ProductBox: React.FC<Props> = ({
       {/* How We Use It */}
 
       {/* From the Treatment Room */}
-      <div className="bg-ocean-100 py-20 px-3">
+      <div className="bg-ocean-100 py-16 px-3 font-sans">
         <div className='text-center text-white flex flex-col gap-4 max-w-2xl mx-auto '>
           <span>• FROM THE TREATMENT ROOM •</span>
           <p className='text-lg font-medium'>Apply with toner, or mix with your favorite facial oil for the complete balance of brightening and hydration. This anti-aging serum is also safe to use around the eyes.</p>

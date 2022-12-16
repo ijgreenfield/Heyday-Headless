@@ -12,6 +12,7 @@ module.exports = {
   },
   theme: {
     fontFamily: {
+      'sans': ['Maison Neue', 'sans'],
       'serif': ['Playfair Display', 'serif']
     },
     extend: {
