@@ -78,7 +78,7 @@ const InnerLayout: React.FC<{
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <div className='my-0 mx-auto py-20'>
+      <div className='my-0 mx-auto py-16'>
         <main>{children}</main>
       </div>
 

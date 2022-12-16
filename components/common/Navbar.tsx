@@ -9,6 +9,7 @@ import { jsx, Themed, useThemeUI } from 'theme-ui'
 import { useUI } from '@components/ui/context'
 import Image from 'next/image'
 import Searchbar from './Searchbar'
+import { Bars3Icon } from '@heroicons/react/24/outline'
 
 const Navbar: FC = () => {
   const [announcement, setAnnouncement] = useState()
@@ -114,7 +115,9 @@ const Navbar: FC = () => {
             justifyContent: ['space-between', 'flex-end'],
           }}
         >
-          <Searchbar />
+          <div className='flex items-center'>
+            <Bars3Icon className='h-6 w-6'/>
+          </div>
           <UserNav />
         </Themed.div>
         </div>
