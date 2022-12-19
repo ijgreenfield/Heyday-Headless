@@ -26,7 +26,6 @@ interface Props {
   vendor?: string
   description?: string
   title?: string
-  id: string
 }
 
 
@@ -36,7 +35,6 @@ const ProductBox: React.FC<Props> = ({
   vendor = product.vendor,
   description = product.description,
   title = product.title,
-  id = product.id
 }) => {
   const [loading, setLoading] = useState(false)
   const addItem = useAddItemToCart()
@@ -302,7 +300,6 @@ const ProductBox: React.FC<Props> = ({
 
 const ProductView: React.FC<{
   product: string | ShopifyBuy.Product
-  id: string
   renderSeo?: boolean
   description?: string
   title?: string
