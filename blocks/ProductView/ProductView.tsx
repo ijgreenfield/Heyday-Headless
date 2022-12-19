@@ -3,7 +3,6 @@
 import React, { useMemo, useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Themed, jsx } from 'theme-ui'
-import { Grid, Button, Container } from '@theme-ui/components'
 import OptionPicker from '@components/common/OptionPicker'
 import { NextSeo } from 'next-seo'
 import { useUI } from '@components/ui/context'
@@ -17,6 +16,7 @@ import { ImageCarousel, LoadingDots } from '@components/ui'
 import ProductLoader from './ProductLoader'
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/20/solid'
+import { getReviews } from '@lib/yotpo'
 
 interface Props {
   className?: string
@@ -26,7 +26,9 @@ interface Props {
   vendor?: string
   description?: string
   title?: string
+  id: string
 }
+
 
 const ProductBox: React.FC<Props> = ({
   product,
@@ -34,6 +36,7 @@ const ProductBox: React.FC<Props> = ({
   vendor = product.vendor,
   description = product.description,
   title = product.title,
+  id = product.id
 }) => {
   const [loading, setLoading] = useState(false)
   const addItem = useAddItemToCart()
@@ -108,6 +111,13 @@ const ProductBox: React.FC<Props> = ({
       answer: "Aqua/Water/Eau, Glycerin, Aloe Barbadensis Leaf Juice, Citrus Aurantium Dulcis (Orange) Oil, Caprylic/Capric Triglyceride, Limonene, C12-15 Alkyl Benzoate, Cetearyl Olivate, Sorbitan Olivate, Imperata Cylindrica Root Extract, Magnesium Ascorbyl Phosphate, Ppg-12/Smdi Copolymer, Tetrahexyldecyl Ascorbate, Glyceryl Stearate, Peg-100 Stearate, Cetyl Alcohol, Dimethicone, Di-Ppg-2 Myreth-10 Adipate, Stearic Acid, Phenoxyethanol, Ethylhexyl Methoxycinnamate, Panthenol, Prunus Amygdalus Dulcis (Sweet Almond) Oil, Xanthan Gum, Caprylyl Glycol, Butylene Glycol, Tocopheryl Acetate, Glycine Soja (Soybean) Sterols, Linoleic Acid, Phospholipids, Simmondsia Chinensis (Jojoba) Seed Oil, Squalane, Propylene Glycol, Ethylhexylglycerin, Glucosamine Hcl,"
     },
   ]
+
+  async function getAllReviews() {
+    const ID = (product.id as string).split('/Product/')[1]
+    const reviews = await getReviews(ID)
+
+    return(reviews)
+  }
 
   return (
     <React.Fragment>
@@ -191,7 +201,7 @@ const ProductBox: React.FC<Props> = ({
                 Add to Cart {loading && <LoadingDots />}
               </button>
             </div>
-            
+
             <div>
               <div className='mb-3 text-sm font-sans'>
                 <div dangerouslySetInnerHTML={{ __html: description! }} />
@@ -227,7 +237,7 @@ const ProductBox: React.FC<Props> = ({
       {/* How We Use It */}
       <div className='bg-shell-50 font-sans'>
         <div className='px-3 py-6'>
-          <div className=''> 
+          <div className=''>
             <span className='text-sm font-semibold font-sans'>How We Use It</span>
             <h1 className='text-xl'>Morning and Night</h1>
             <p className='text-sm'>Apply a few drops to clean, toned skin, focusing on areas that you feel need a bit of extra attention.</p>
@@ -239,7 +249,7 @@ const ProductBox: React.FC<Props> = ({
               <span className='uppercase text-sm mb-2'>Before</span>
               <div className='flex bg-white rounded-lg overflow-hidden'>
                 <div className='relative h-20 w-20'>
-                  <Image 
+                  <Image
                     src='https://res.cloudinary.com/dinn28die/image/upload/v1671132334/cld-sample-5.jpg'
                     alt='product image'
                     layout='fill'
@@ -255,7 +265,7 @@ const ProductBox: React.FC<Props> = ({
               <span className='uppercase text-sm mb-2'>After</span>
               <div className='flex bg-white rounded-lg overflow-hidden'>
                 <div className='relative h-20 w-20'>
-                  <Image 
+                  <Image
                     src='https://res.cloudinary.com/dinn28die/image/upload/v1671132334/cld-sample-5.jpg'
                     alt='product image'
                     layout='fill'
@@ -280,12 +290,19 @@ const ProductBox: React.FC<Props> = ({
         </div>
       </div>
       {/* From the Treatment Room End */}
+
+      {/* Reviews */}
+      <div>
+        <p></p>
+      </div>
+      {/* Reviews */}
     </React.Fragment>
   )
 }
 
 const ProductView: React.FC<{
   product: string | ShopifyBuy.Product
+  id: string
   renderSeo?: boolean
   description?: string
   title?: string

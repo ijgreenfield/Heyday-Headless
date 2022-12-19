@@ -41,16 +41,8 @@ const Navbar: FC = () => {
         model="announcement-bar"
       />*/}
       <header className='my-0 mx-auto relative bg-white'>
-        <div className='flex justify-between items-center bg-white z-50 px-3 py-5 fixed top-0 left-0 right-0'>
-        <Themed.div
-          sx={{
-            display: ['none', 'none', 'flex'],
-            flexBasis: 0,
-            flex: 1,
-            minWidth: 240,
-            justifyContent: 'start',
-          }}
-        >
+        <div className='flex justify-between items-center bg-white z-50 px-3 py-3 fixed top-0 left-0 right-0'>
+        <div className='hidden flex-1 justify-start'>
           {navigationLinks?.map((link, index) => (
             <div key={index} className='mr-8'>
               <Link href={link.link}>
@@ -58,15 +50,8 @@ const Navbar: FC = () => {
               </Link>
             </div>
           ))}
-        </Themed.div>
-        <Themed.div
-          sx={{
-            flex: 1,
-            transform: 'translateX(-50%)',
-            left: '50%',
-            position: 'absolute',
-          }}
-        >
+        </div>
+        <div className='flex-1'>
           <Themed.h1
             sx={{
               fontSize: 20,
@@ -105,21 +90,17 @@ const Navbar: FC = () => {
               </Themed.a>
             )}
           </Themed.h1>
-        </Themed.div>
-        <Themed.div
-          sx={{
-            display: 'flex',
-            flex: 1,
-            minWidth: 140,
-            width: '100%',
-            justifyContent: ['space-between', 'flex-end'],
-          }}
-        >
-          <div className='flex items-center'>
+        </div>
+        <div className='flex items-center justify-between'>
+          <div>
+            <button className='bg-ocean-100 text-white py-3 px-8 rounded-lg font-semibold'>
+              Book Now
+            </button>
+          </div>
+          <div className='flex ml-3'>
             <Bars3Icon className='h-6 w-6'/>
           </div>
-          <UserNav />
-        </Themed.div>
+        </div>
         </div>
       </header>
     </React.Fragment>

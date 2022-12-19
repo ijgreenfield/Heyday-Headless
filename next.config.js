@@ -27,6 +27,7 @@ module.exports = bundleAnalyzer({
     SHOPIFY_STORE_DOMAIN: process.env.SHOPIFY_STORE_DOMAIN,
     BUILDER_PUBLIC_KEY: process.env.BUILDER_PUBLIC_KEY,
     IS_DEMO: process.env.IS_DEMO,
+    YOTPO_APP_KEY: process.env.YOTPO_APP_KEY
   },
   i18n: {
     // These are all the locales you want to support in
