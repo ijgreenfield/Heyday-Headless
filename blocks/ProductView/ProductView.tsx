@@ -112,12 +112,12 @@ const ProductBox: React.FC<Props> = ({
     },
   ]
 
-  async function getAllReviews() {
-    const ID = (product.id as string).split('/Product/')[1]
-    const reviews = await getReviews(ID)
+  //async function getAllReviews() {
+   // const ID = (product.id as string).split('/Product/')[1]
+    //const reviews = await getReviews(ID)
 
-    return(reviews)
-  }
+   // return(reviews)
+  //}
 
   return (
     <React.Fragment>
