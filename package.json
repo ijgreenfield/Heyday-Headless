@@ -44,6 +44,7 @@
     ]
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^2.0.1",
     "@builder.io/cli": "^1.2.6",
     "@builder.io/react": "^1.1.47",
     "@builder.io/utils": "^1.0.3",
