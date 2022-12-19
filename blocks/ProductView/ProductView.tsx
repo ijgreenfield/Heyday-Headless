@@ -16,7 +16,6 @@ import { ImageCarousel, LoadingDots } from '@components/ui'
 import ProductLoader from './ProductLoader'
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/20/solid'
-import { getReviews } from '@lib/yotpo'
 
 interface Props {
   className?: string
