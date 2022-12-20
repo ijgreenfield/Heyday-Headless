@@ -9,7 +9,7 @@ import { jsx, Themed, useThemeUI } from 'theme-ui'
 import { useUI } from '@components/ui/context'
 import Image from 'next/image'
 import Searchbar from './Searchbar'
-import { Bars3Icon } from '@heroicons/react/24/outline'
+import { Bars2Icon } from '@heroicons/react/24/outline'
 
 const Navbar: FC = () => {
   const [announcement, setAnnouncement] = useState()
@@ -34,14 +34,14 @@ const Navbar: FC = () => {
   }, [cart?.lineItems])
 
   return (
-    <React.Fragment>
-      {/*<BuilderComponent
+    <>
+      <BuilderComponent
         content={announcement}
         data={{ theme }}
         model="announcement-bar"
-      />*/}
+      />
       <header className='my-0 mx-auto relative bg-white'>
-        <div className='flex justify-between items-center bg-white z-50 px-3 py-3 fixed top-0 left-0 right-0'>
+        <div className='flex justify-between items-center bg-white z-50 px-3 py-1'>
         <div className='hidden flex-1 justify-start'>
           {navigationLinks?.map((link, index) => (
             <div key={index} className='mr-8'>
@@ -50,6 +50,11 @@ const Navbar: FC = () => {
               </Link>
             </div>
           ))}
+        </div>
+        <div className='flex-1'>
+          <div className='flex ml-3'>
+            <Bars2Icon className='h-6 w-6'/>
+          </div>
         </div>
         <div className='flex-1'>
           <Themed.h1
@@ -93,17 +98,12 @@ const Navbar: FC = () => {
         </div>
         <div className='flex items-center justify-between'>
           <div>
-            <button className='bg-ocean-100 text-white py-3 px-8 rounded-lg font-semibold'>
-              Book Now
-            </button>
-          </div>
-          <div className='flex ml-3'>
-            <Bars3Icon className='h-6 w-6'/>
+            <UserNav />
           </div>
         </div>
         </div>
       </header>
-    </React.Fragment>
+    </>
   )
 }
 
