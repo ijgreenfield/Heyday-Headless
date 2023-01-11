@@ -1,17 +1,32 @@
-import useSWR from 'swr'
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
-
-function YotpoReviews() {
+import { useEffect, useState } from 'react'
 
 
+export default function YotpoReviews() {
+  const [showReviews, setShowReviews] = useState();
 
-    fetch('https://api-cdn.yotpo.com/v1/widget/7DTLUDTEEN8jf5H5TWwLgyTY60lTruCBgm2HJk7s/products/4773568938072/reviews.json')
+  let reviews;
 
+  function getReviews() {
+    const url = 'https://api-cdn.yotpo.com/v1/widget/7DTLUDTEEN8jf5H5TWwLgyTY60lTruCBgm2HJk7s/products/4773568938072/reviews.json'
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        data.response.reviews.map(item => (
+            <p>{item.content}</p>
+          )
+        )
+      })
+
+    //return
+  }
+
+  useEffect(() => {
+    getReviews()
+  })
 
   return (
     <div>
-      <h1></h1>
+      {showReviews}
     </div>
   )
 }

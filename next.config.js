@@ -3,13 +3,6 @@ const bundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = bundleAnalyzer({
-  webpack: (
-    config,
-    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
-  ) => {
-    // Important: return the modified config
-    return config
-  },
   target: 'serverless',
   images: {
     domains: ['res.cloudinary.com', 'cdn.shopify.com', 'cdn.builder.io', 'via.placeholder.com'],

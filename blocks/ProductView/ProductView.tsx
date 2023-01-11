@@ -16,6 +16,8 @@ import { ImageCarousel, LoadingDots } from '@components/ui'
 import ProductLoader from './ProductLoader'
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/20/solid'
+import YotpoReviews from '@components/ui/YotpoReviews'
+
 
 interface Props {
   className?: string
@@ -109,12 +111,21 @@ const ProductBox: React.FC<Props> = ({
     },
   ]
 
-  //async function getAllReviews() {
-   // const ID = (product.id as string).split('/Product/')[1]
-    //const reviews = await getReviews(ID)
+  function getReviews() {
+    const url = 'https://api-cdn.yotpo.com/v1/widget/7DTLUDTEEN8jf5H5TWwLgyTY60lTruCBgm2HJk7s/products/4773568938072/reviews.json'
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      })
 
-   // return(reviews)
-  //}
+    //return
+  }
+
+  useEffect(() => {
+    getReviews()
+  })
+
 
   return (
     <React.Fragment>
@@ -290,12 +301,13 @@ const ProductBox: React.FC<Props> = ({
 
       {/* Reviews */}
       <div>
-        <p></p>
+        <YotpoReviews />
       </div>
       {/* Reviews */}
     </React.Fragment>
   )
 }
+
 
 const ProductView: React.FC<{
   product: string | ShopifyBuy.Product

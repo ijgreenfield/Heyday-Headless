@@ -18,7 +18,7 @@ import DefaultErrorPage from 'next/error'
 import Head from 'next/head'
 import { useThemeUI } from 'theme-ui'
 import { getLayoutProps } from '@lib/get-layout-props'
-import { getReviews } from '@lib/yotpo'
+
 builder.init(builderConfig.apiKey!)
 
 const builderModel = 'product-page'
@@ -35,9 +35,6 @@ export async function getStaticProps({
     productHandle: params?.handle,
     locale,
   })
-
-  const productID = product.id.split('Product/')[1];
-  const reviews = await getReviews(productID)
 
   return {
     notFound: !page ,

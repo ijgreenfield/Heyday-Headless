@@ -12,7 +12,6 @@ import '../blocks/ProductGrid/ProductGrid.builder'
 import '../blocks/CollectionView/CollectionView.builder'
 import '../blocks/ProductView/ProductView.builder'
 import '../blocks/CloudinaryImage/CloudinaryImage.builder'
-import { UserProvider } from '@auth0/nextjs-auth0/client'
 
 Builder.register('insertMenu', {
   name: 'Shopify Collections Components',
@@ -42,10 +41,8 @@ const Noop: FC = ({ children }) => <>{children}</>
 export default function MyApp({ Component, pageProps }: AppProps) {
   const Layout = (Component as any).Layout || Noop
   return (
-    <UserProvider>
       <Layout pageProps={pageProps}>
         <Component {...pageProps} />
       </Layout>
-    </UserProvider>
   )
 }
