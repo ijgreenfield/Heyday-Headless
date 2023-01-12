@@ -47,10 +47,7 @@ const CollectionPreview: FC<Props> = ({
   const { title, description, products } = collection
 
   return (
-    <Themed.div
-      sx={{ display: 'flex', flexDirection: 'column' }}
-      key={collection.id}
-    >
+    <div className='flex flex-col' key={collection.id}>
       {renderSeo && (
         <NextSeo
           title={collection.title}
@@ -62,16 +59,16 @@ const CollectionPreview: FC<Props> = ({
           }}
         />
       )}
-      <div className='flex flex-col px-3'>
-        <span sx={{ mt: 0, mb: 2 }}>
-          <Themed.h1>{collection.title}</Themed.h1>
+      <div className='flex flex-col px-3 block'>
+        <span className='mt-0 mb-2'>
+          <h1>{collection.title}</h1>
         </span>
         <div dangerouslySetInnerHTML={{ __html: collection.description! }} />
       </div>
       <div>
         <ProductGrid {...productGridOptions} products={products} />
       </div>
-    </Themed.div>
+    </div>
   )
 }
 
