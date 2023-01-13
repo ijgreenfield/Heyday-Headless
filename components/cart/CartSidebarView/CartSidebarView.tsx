@@ -8,6 +8,7 @@ import { useCart, useCheckoutUrl } from '@lib/shopify/storefront-data-hooks'
 import CartItem from '../CartItem'
 import { BuilderComponent, builder } from '@builder.io/react'
 import env from '@config/env'
+import Button from '@components/ui/Button'
 
 const CartSidebarView: FC = () => {
   const checkoutUrl = useCheckoutUrl()
@@ -36,28 +37,13 @@ const CartSidebarView: FC = () => {
   }, [cart?.lineItems])
 
   return (
-    <Themed.div
-      sx={{
-        height: '100%',
-        overflow: 'auto',
-        paddingBottom: 5,
-        bg: 'text',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        px: 2,
-        color: 'background',
-        ...(isEmpty && { justifyContent: 'center' }),
-      }}
-    >
+    <div className={`h-full pb-5 px-6 flex flex-col items-center bg-neutral-tertiary ${isEmpty &&  'justify-center' }`}>
       {isEmpty ? (
-        <>
+        <div className='flex flex-col gap-y-4 justify-center items-center w-full'>
           <Bag />
-          Your cart is empty
-          <Text>
-            Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
-          </Text>
-        </>
+          <p className='text-2xl'>Your cart is empty</p>
+          <Button className='border border-neutral-primary w-full py-3 font-semibold' href='/collections/all'>Start Shopping</Button>
+        </div>
       ) : (
         <>
           {items.map((item: any) => (
@@ -98,7 +84,7 @@ const CartSidebarView: FC = () => {
           )}
         </>
       )}
-    </Themed.div>
+    </div>
   )
 }
 

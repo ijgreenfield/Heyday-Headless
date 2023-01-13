@@ -53,7 +53,7 @@ const Navbar: FC = () => {
           </div>
 
 
-          <div className='flex justify-between items-center bg-white z-50 py-4 relative'>
+          <div className='flex justify-between items-center bg-white py-4 relative'>
             <div className='absolute left-2/4 transform -translate-x-2/4'>
               <div className='flex items-center'>
                 {logo && logo.image && (

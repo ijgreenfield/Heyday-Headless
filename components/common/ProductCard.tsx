@@ -7,7 +7,8 @@ import { Link, ImageCarousel } from '@components/ui'
 import { getPrice } from '@lib/shopify/storefront-data-hooks/src/utils/product'
 import { useAddItemToCart } from '@lib/shopify/storefront-data-hooks'
 import { useUI } from '@components/ui/context'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import StarRatings from 'react-star-ratings'
 
 export interface ProductCardProps {
   className?: string
@@ -74,9 +75,19 @@ const { openSidebar } = useUI()
         </div>
         <div className='flex flex-col py-3'>
           <span className='uppercase text-xs'>{product.vendor}</span>
-          <span className='text-sm font-sans'>
+          <span className='font-medium font-sans text-md mb-4'>
             {product.title}
           </span>
+          <div className='flex flex-row gap-x-4 mb-2'>
+              <StarRatings
+              rating={2}
+              starRatedColor="#F2B14E"
+              numberOfStars={5}
+              name='rating'
+              starDimension='20px'
+              starSpacing='2px'
+            />
+          </div>
           <Button onClick={addToCart} className="border border-neutral-primary text-xs py-2">
             Add to Cart - {price}
           </Button>

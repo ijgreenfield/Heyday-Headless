@@ -32,17 +32,12 @@ const Sidebar: FC<Props> = ({ children, open = false, onClose }) => {
       }}
     >
       <ModalCloseTarget>
-        <Themed.div
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            py: 1,
-            bg: 'text',
-            color: 'background',
-          }}
-        >
-          <Close />
-        </Themed.div>
+        <div className='flex justify-between py-1 bg-neutral-tertiary'>
+          <Close sx={{
+            width: '32px',
+            height: '32px'
+          }}/>
+        </div>
       </ModalCloseTarget>
       {children}
     </BaseModal>

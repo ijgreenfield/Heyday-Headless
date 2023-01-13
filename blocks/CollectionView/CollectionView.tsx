@@ -63,7 +63,7 @@ const CollectionPreview: FC<Props> = ({
       <Container>
         <div className='flex flex-col block mb-8'>
           <span className='mt-0 mb-2'>
-            <h1 className="text-3xl">{collection.title}</h1>
+            <h1 className="text-4xl">{collection.title}</h1>
           </span>
           <div dangerouslySetInnerHTML={{ __html: collection.description! }} />
         </div>
