@@ -12,7 +12,7 @@
   font-family: 'Cadiz';
   src: 
     local('Cadiz'),
-    url('./public/fonts/Cadiz/Cadiz_Variable_Upright_Web.woff')
+    url('../public/fonts/Cadiz/Cadiz_Variable_Upright_Web.woff')
 
 }
 
