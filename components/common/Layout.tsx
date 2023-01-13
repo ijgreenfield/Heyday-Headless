@@ -67,7 +67,6 @@ const InnerLayout: React.FC<{
     },
   }
   const { displaySidebar, closeSidebar } = useUI()
-  const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
   return (
     <ThemeProvider theme={theme}>
       <Navbar />

@@ -5,12 +5,13 @@ import { useRouter } from 'next/router'
 import { LoadingDots } from '@components/ui'
 import shopifyConfig from '@config/shopify'
 import { ProductGrid } from 'blocks/ProductGrid/ProductGrid'
-import { Button, Themed, jsx, Input, Label } from 'theme-ui'
+import { Themed, jsx, Input, Label } from 'theme-ui'
 import { searchProducts } from '@lib/shopify/storefront-data-hooks/src/api/operations'
 import { ExpandModal } from 'react-spring-modal'
 import { throttle } from 'lodash'
 import 'react-spring-modal/styles.css'
 import { Cross } from '@components/icons'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 interface Props {
   className?: string
@@ -57,31 +58,17 @@ const Searchbar: FC<Props> = () => {
         />
       </ExpandModal>
 
-      <Themed.div
+      <div
         ref={buttonRef}
-        as={Button}
-        mx={2}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Search"
       >
         {isOpen ? (
           <Cross />
         ) : (
-          <svg
-            width="20"
-            height="22"
-            viewBox="0 0 20 22"
-            fill="none"
-            stroke="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-            />
-          </svg>
+          <MagnifyingGlassIcon className='h-6 w-6'/>
         )}
-      </Themed.div>
+      </div>
     </React.Fragment>
   )
 }

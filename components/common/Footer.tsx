@@ -7,7 +7,7 @@ const Footer: FC = () => {
     const primLinks = [
         {
             name: "About",
-            href: "/legal/service-product-policy"
+            href: "/about"
         },
         {
             name: "FAQ",
@@ -71,6 +71,9 @@ const Footer: FC = () => {
                                     )
                                 })}
                             </ul>
+                        </div>
+                        <div className="max-w-1/2">
+                            <span className="text-lg">Skincare Without Second Guessing</span>
                         </div>
                     </div>
                 </Container>

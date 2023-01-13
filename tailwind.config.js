@@ -15,6 +15,9 @@ module.exports = {
       'sans': ['Maison Neue', 'sans'],
       'serif': ['Playfair Display', 'serif']
     },
+    maxWidth: {
+      '1/2': '50%',
+    },
     extend: {
       maxWidth: {
         '8xl': '1920px',
