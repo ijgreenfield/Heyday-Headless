@@ -7,3 +7,5 @@ const Locations: FC = () => {
         </div>
     )
 }
+
+export default Locations
