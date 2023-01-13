@@ -16,23 +16,23 @@ const OptionPicker: React.FC<OptionPickerProps> = ({
   selected,
 }) => {
   return (
-    <div className='w-full'>
-      {/*<Label htmlFor={name}>{name}</Label>
+    <div className=''>
+      {/*<Label htmlFor={name}>{name}</Label>*/}
       <Select id={name} onChange={onChange} value={selected}>
         {options?.map((option) => (
           <option value={option} key={option}>
             {option}
           </option>
         ))}
-        </Select>*/}
+        </Select>
 
-        <div className='flex gap-3'>
+        {/*<div className='flex gap-3'>
           {options?.map(option => (
             <div key={option} className='border p-3 rounded-lg'>
               {option}
             </div>
           ))}
-        </div>
+          </div>*/}
     </div>
   )
 }

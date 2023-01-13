@@ -17,6 +17,7 @@ import ProductLoader from './ProductLoader'
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/20/solid'
 import YotpoReviews from '@components/ui/YotpoReviews'
+import { Container } from '@components/common'
 
 
 interface Props {
@@ -111,21 +112,6 @@ const ProductBox: React.FC<Props> = ({
     },
   ]
 
-  function getReviews() {
-    const url = 'https://api-cdn.yotpo.com/v1/widget/7DTLUDTEEN8jf5H5TWwLgyTY60lTruCBgm2HJk7s/products/4773568938072/reviews.json'
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-      })
-
-    //return
-  }
-
-  useEffect(() => {
-    getReviews()
-  })
-
 
   return (
     <React.Fragment>
@@ -169,76 +155,66 @@ const ProductBox: React.FC<Props> = ({
               ></ImageCarousel>
             </div>
           </div>
-          <div className='flex flex-col px-3'>
-            <span className='mt-0 mb-2'>
-              <span className='uppercase text-sm font-sans'>{vendor}</span>
-              <h1 className='text-2xl font-normal leading-normal font-sans'>{title}</h1>
-              <h4 aria-label="price" className='mt-1 mb-1 text-xl font-semibold font-sans'>
-                {getPrice(variant.priceV2.amount, variant.priceV2.currencyCode)}
-              </h4>
-            </span>
-            <div className='mb-3'>
-              <div>
-                {colors?.length && (
-                  <OptionPicker
-                    key="Color"
-                    name="Color"
-                    options={colors}
-                    selected={color}
-                    onChange={(event) => setColor(event.target.value)}
-                  />
-                )}
-                {sizes?.length && (
-                  <OptionPicker
-                    key="Size"
-                    name="Size"
-                    options={sizes}
-                    selected={size}
-                    onChange={(event) => setSize(event.target.value)}
-                  />
-                )}
+          <Container>
+            <div className='flex flex-col'>
+              <span className='mt-0 mb-2'>
+                <span className='uppercase text-sm font-sans'>{vendor}</span>
+                <h1 className='text-2xl font-normal leading-normal font-serif'>{title}</h1>
+              </span>
+              <div className='mb-3'>
               </div>
-            </div>
-            <div className='mb-4 w-full'>
-              <button
-                name="add-to-cart"
-                disabled={loading}
-                onClick={addToCart}
-                className='py-3 px-3 bg-ocean-100 text-white rounded-lg font-semibold w-full font-sans'
-              >
-                Add to Cart {loading && <LoadingDots />}
-              </button>
-            </div>
+              <div className='mb-4 w-full flex'>
+                <div>
+                  {sizes?.length && (
+                    <OptionPicker
+                      key="Size"
+                      name="Size"
+                      options={sizes}
+                      selected={size}
+                      onChange={(event) => setSize(event.target.value)}
+                    />
+                  )}
+                </div>
+                <button
+                  name="add-to-cart"
+                  disabled={loading}
+                  onClick={addToCart}
+                  className='py-3 px-3 border border-neutral-primary text-neutral-primary w-full font-sans'
+                >
+                  <span>Add to Cart - {getPrice(variant.priceV2.amount, variant.priceV2.currencyCode)}</span>{loading && <LoadingDots />}
+                </button>
+              </div>
 
-            <div>
-              <div className='mb-3 text-sm font-sans'>
-                <div dangerouslySetInnerHTML={{ __html: description! }} />
-              </div>
               <div>
-                {ingredients.map(ingredient => (
-                  <div key={ingredient.title} className='font-sans'>
-                    <Disclosure>
-                    {({ open }) => (
-                      <>
-                      <Disclosure.Button className="flex w-full justify-between border-b border-b-blackpx-4 py-2 text-left text-sm font-medium focus:outline-none focus-visible:ring focus-visible:ring-opacity-75">
-                        <span>{ingredient.title}</span>
-                        <ChevronUpIcon
-                          className={`${
-                            open ? 'rotate-180 transform' : ''
-                          } h-5 w-5 text-black`}
-                        />
-                      </Disclosure.Button>
-                      <Disclosure.Panel className="text-gray-500">
-                        {ingredient.answer}
-                      </Disclosure.Panel>
-                      </>
-                    )}
-                    </Disclosure>
-                  </div>
-                ))}
+                <div className='mb-3 text-sm font-sans'>
+                  <div dangerouslySetInnerHTML={{ __html: description! }} />
+                </div>
+                <div>
+                  {ingredients.map(ingredient => (
+                    <div key={ingredient.title} className='font-sans'>
+                      <Disclosure>
+                      {({ open }) => (
+                        <>
+                        <Disclosure.Button className="flex w-full justify-between border-b border-b-blackpx-4 py-2 text-left text-sm font-medium focus:outline-none focus-visible:ring focus-visible:ring-opacity-75">
+                          <span>{ingredient.title}</span>
+                          <ChevronUpIcon
+                            className={`${
+                              open ? 'rotate-180 transform' : ''
+                            } h-5 w-5 text-black`}
+                          />
+                        </Disclosure.Button>
+                        <Disclosure.Panel className="text-gray-500">
+                          {ingredient.answer}
+                        </Disclosure.Panel>
+                        </>
+                      )}
+                      </Disclosure>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          </Container>
         </div>
       </div>
 
