@@ -56,7 +56,7 @@ const Footer: FC = () => {
     ]
     
     return (
-        <footer className="">
+        <footer className="font-sans">
             <div className="border-t border-neutral-primary">
                 <Container>
                     <div className="py-10">
@@ -65,7 +65,7 @@ const Footer: FC = () => {
                                 {primLinks.map(link => {
                                     const { href, name } = link
                                     return (
-                                        <li className='w-1/2 pb-8'>
+                                        <li className='w-1/2 pb-8 font-sans'>
                                             <Link href={href}>{name}</Link>
                                         </li>
                                     )

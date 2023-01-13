@@ -12,7 +12,7 @@ module.exports = {
   },
   theme: {
     fontFamily: {
-      'sans': ['Maison Neue', 'sans'],
+      'sans': ['Cadiz', 'sans'],
       'serif': ['Playfair Display', 'serif']
     },
     maxWidth: {
