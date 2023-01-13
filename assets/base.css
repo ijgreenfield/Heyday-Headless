@@ -8,6 +8,14 @@
   src: url('https://cdn.shopify.com/s/files/1/1704/8471/t/501/assets/MaisonNeueBook.woff2?v=160879981933109394541669923579');
 }
 
+@font-face {
+  font-family: 'Cadiz';
+  src: 
+    local('Cadiz'),
+    url('./public/fonts/Cadiz/Cadiz_Variable_Upright_Web.woff')
+
+}
+
 :root {
   --primary: #ffffff;
   --primary-2: #f1f3f5;
