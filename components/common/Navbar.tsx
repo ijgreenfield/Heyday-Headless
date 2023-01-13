@@ -40,7 +40,7 @@ const Navbar: FC = () => {
         data={{ theme }}
         model="announcement-bar"
       />
-      <header className='my-0 mx-auto relative bg-white'>
+      <header className='my-0 mx-auto relative bg-white border-b border-neutral-primary'>
         <Container>
           <div className='hidden flex-1 justify-start'>
             {navigationLinks?.map((link, index) => (

@@ -77,7 +77,7 @@ export const ProductGrid: FC<ProductGridProps> = ({
     : ProductCard
 
   return (
-    <div className='grid grid-cols-2'>
+    <div className='grid grid-cols-2 gap-4'>
       {products.slice(offset, limit).map((product, i) => (
         <ProductComponent
           key={String(product.id) + i}

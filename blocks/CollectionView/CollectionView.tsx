@@ -7,6 +7,7 @@ import { LoadingDots } from '@components/ui'
 import shopifyConfig from '@config/shopify'
 import { ProductGrid, ProductGridProps } from '../ProductGrid/ProductGrid'
 import { getCollection } from '@lib/shopify/storefront-data-hooks/src/api/operations'
+import { Container } from '@components/common'
 
 interface Props {
   className?: string
@@ -47,7 +48,7 @@ const CollectionPreview: FC<Props> = ({
   const { title, description, products } = collection
 
   return (
-    <div className='flex flex-col' key={collection.id}>
+    <div className='flex flex-col py-8' key={collection.id}>
       {renderSeo && (
         <NextSeo
           title={collection.title}
@@ -59,15 +60,17 @@ const CollectionPreview: FC<Props> = ({
           }}
         />
       )}
-      <div className='flex flex-col px-3 block'>
-        <span className='mt-0 mb-2'>
-          <h1>{collection.title}</h1>
-        </span>
-        <div dangerouslySetInnerHTML={{ __html: collection.description! }} />
-      </div>
-      <div>
-        <ProductGrid {...productGridOptions} products={products} />
-      </div>
+      <Container>
+        <div className='flex flex-col block mb-8'>
+          <span className='mt-0 mb-2'>
+            <h1 className="text-3xl">{collection.title}</h1>
+          </span>
+          <div dangerouslySetInnerHTML={{ __html: collection.description! }} />
+        </div>
+        <div>
+          <ProductGrid {...productGridOptions} products={products} />
+        </div>
+      </Container>
     </div>
   )
 }

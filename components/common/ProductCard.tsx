@@ -1,10 +1,13 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { Themed, jsx } from 'theme-ui'
+import Button from '@components/ui/Button'
 import { Card, Text } from '@theme-ui/components'
 import { Link, ImageCarousel } from '@components/ui'
 import { getPrice } from '@lib/shopify/storefront-data-hooks/src/utils/product'
-import { useState } from 'react'
+import { useAddItemToCart } from '@lib/shopify/storefront-data-hooks'
+import { useUI } from '@components/ui/context'
+import { useEffect, useState } from 'react'
 
 export interface ProductCardProps {
   className?: string
@@ -26,6 +29,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   imgSizes,
   imgLayout = 'responsive',
 }) => {
+  const [loading, setLoading] = useState(false)
+  const addItem = useAddItemToCart()
   const handle = (product as any).handle
   const productVariant: any = product.variants[0]
   const price = getPrice(
@@ -33,15 +38,22 @@ const ProductCard: React.FC<ProductCardProps> = ({
     productVariant.priceV2.currencyCode
   )
 
+const { openSidebar } = useUI()
+
+
+  const addToCart = async () => {
+    setLoading(true)
+    try {
+      await addItem(productVariant.id, 1)
+      openSidebar()
+      setLoading(false)
+    } catch (err) {
+      setLoading(false)
+    }
+  }
+
   return (
-    <Card
-      sx={{
-        maxWidth: [700, imgWidth || 540],
-        p: 3,
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
+    <Card className="flex flex-col">
       <Link href={`/product/${handle}/`}>
         <div sx={{ flexGrow: 1 }}>
           <ImageCarousel
@@ -62,10 +74,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
         <div className='flex flex-col py-3'>
           <span className='uppercase text-xs'>{product.vendor}</span>
-          <h2 className='text-sm'>
+          <span className='text-sm font-sans'>
             {product.title}
-          </h2>
-          <p className='mb-2'>{price}</p>
+          </span>
+          <Button onClick={addToCart} className="border border-neutral-primary text-xs py-2">
+            Add to Cart - {price}
+          </Button>
         </div>
       </Link>
     </Card>
