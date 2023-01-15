@@ -1,7 +1,9 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+import { FC } from 'react'
 import { jsx } from 'theme-ui'
-import { Select, Label } from '@theme-ui/components'
+import { Select } from '@theme-ui/components'
+
 export interface OptionPickerProps {
   name: string
   options?: Readonly<Array<string | undefined>>
@@ -9,7 +11,7 @@ export interface OptionPickerProps {
   selected?: string
 }
 
-const OptionPicker: React.FC<OptionPickerProps> = ({
+const OptionPicker: FC<OptionPickerProps> = ({
   name,
   options,
   onChange,
