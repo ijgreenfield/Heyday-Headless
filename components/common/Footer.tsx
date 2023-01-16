@@ -56,24 +56,24 @@ const Footer: FC = () => {
     ]
     
     return (
-        <footer className="font-sans">
+        <footer className="font-sans text-sm">
             <div className="border-t border-neutral-primary">
                 <Container>
                     <div className="py-10">
                         <div>
-                            <ul className='flex flex-row flex-wrap justify-between'>
+                            <ul className='flex flex-row flex-wrap justify-between text-sm font-sans'>
                                 {primLinks.map(link => {
                                     const { href, name } = link
                                     return (
-                                        <li className='w-1/2 pb-8 font-sans'>
+                                        <li className='w-1/2 pb-8'>
                                             <Link href={href}>{name}</Link>
                                         </li>
                                     )
                                 })}
                             </ul>
                         </div>
-                        <div className="max-w-1/2">
-                            <span className="text-lg">Skincare Without Second Guessing</span>
+                        <div className="max-w-1/2 text-neutral-primary">
+                            <span className="text-lg font-sans">Skincare Without Second Guessing</span>
                         </div>
                     </div>
                 </Container>

@@ -4,8 +4,9 @@
 }
 
 @font-face {
-  font-family: 'Maison Neue';
-  src: url('https://cdn.shopify.com/s/files/1/1704/8471/t/501/assets/MaisonNeueBook.woff2?v=160879981933109394541669923579');
+  font-family: 'Maison Neue Book';
+  src: 
+    url('../public/fonts/MaisonNeue/MaisonNeueBook.otf') format('opentype');
 }
 
 @font-face {
@@ -92,7 +93,6 @@ html {
   height: 100%;
   box-sizing: border-box;
   touch-action: manipulation;
-  font-family: 'Maison Neue';
   font-feature-settings: 'case' 1, 'rlig' 1, 'calt' 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -101,7 +101,7 @@ html {
 
 html,
 body {
-  font-family: 'Maison Neue';
+  font-family: 'Maison Neue Regular', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
