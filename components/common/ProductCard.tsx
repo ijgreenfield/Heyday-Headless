@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { Themed, jsx } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import Button from '@components/ui/Button'
 import { Card, Text } from '@theme-ui/components'
 import { Link, ImageCarousel } from '@components/ui'

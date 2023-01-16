@@ -73,7 +73,7 @@ const Footer: FC = () => {
                             </ul>
                         </div>
                         <div className="max-w-1/2 text-neutral-primary">
-                            <span className="text-lg font-sans">Skincare Without Second Guessing</span>
+                            <p className="text-lg font-sans text-neutral-primary">Skincare Without Second Guessing</p>
                         </div>
                     </div>
                 </Container>

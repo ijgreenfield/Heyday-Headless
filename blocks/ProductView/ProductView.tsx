@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import React, { useMemo, useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Themed, jsx } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import OptionPicker from '@components/common/OptionPicker'
 import { NextSeo } from 'next-seo'
 import { useUI } from '@components/ui/context'
@@ -16,7 +16,6 @@ import { ImageCarousel, LoadingDots } from '@components/ui'
 import ProductLoader from './ProductLoader'
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/20/solid'
-import YotpoReviews from '@components/ui/YotpoReviews'
 import { Container } from '@components/common'
 
 
@@ -274,12 +273,6 @@ const ProductBox: React.FC<Props> = ({
         </div>
       </div>
       {/* From the Treatment Room End */}
-
-      {/* Reviews */}
-      <div>
-        <YotpoReviews />
-      </div>
-      {/* Reviews */}
     </React.Fragment>
   )
 }

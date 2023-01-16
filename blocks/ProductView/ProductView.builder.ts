@@ -3,11 +3,7 @@ import dynamic from 'next/dynamic'
 
 const isDemo = Boolean(process.env.IS_DEMO)
 const LazyProductView = dynamic(
-  () =>
-    isDemo
-      ? import(`blocks/ProductView/ProductViewDemo`)
-      : import(`blocks/ProductView/ProductView`),
-  { ssr: true }
+  () => import(`blocks/ProductView/ProductView`), { ssr: true }
 )
 
 restrictedRegister(
