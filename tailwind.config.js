@@ -27,6 +27,7 @@ module.exports = {
         secondary: 'var(--secondary)',
         'secondary-2': 'var(--secondary-2)',
         hover: 'var(--hover)',
+        'other-neutral': '#333f48',
         'neutral-primary': '#35383D',
         'neutral-secondary': '#FFFFFF',
         'neutral-tertiary': '#F7EEE8',

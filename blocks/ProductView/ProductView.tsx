@@ -39,9 +39,6 @@ const ProductBox: React.FC<Props> = ({
 }) => {
   const [loading, setLoading] = useState(false)
   const addItem = useAddItemToCart()
-  const colors: string[] | undefined = product?.options
-    ?.find((option) => option?.name?.toLowerCase() === 'color')
-    ?.values?.map((op) => op.value as string)
 
   const sizes: string[] | undefined = product?.options
     ?.find((option) => option?.name?.toLowerCase() === 'size')
@@ -111,7 +108,6 @@ const ProductBox: React.FC<Props> = ({
     },
   ]
 
-
   return (
     <React.Fragment>
       {renderSeo && (
@@ -163,7 +159,7 @@ const ProductBox: React.FC<Props> = ({
               <div className='mb-3'>
               </div>
               <div className='mb-4 w-full flex'>
-                <div>
+                <div className='w-1/4'>
                   {sizes?.length && (
                     <OptionPicker
                       key="Size"
@@ -171,6 +167,7 @@ const ProductBox: React.FC<Props> = ({
                       options={sizes}
                       selected={size}
                       onChange={(event) => setSize(event.target.value)}
+                      className="h-full w-full"
                     />
                   )}
                 </div>
@@ -178,7 +175,7 @@ const ProductBox: React.FC<Props> = ({
                   name="add-to-cart"
                   disabled={loading}
                   onClick={addToCart}
-                  className='py-3 px-3 border border-neutral-primary text-neutral-primary w-full font-sans'
+                  className='py-3 px-3 border border-neutral-primary text-neutral-primary w-3/4 font-sans'
                 >
                   <span>Add to Cart - {getPrice(variant.priceV2.amount, variant.priceV2.currencyCode)}</span>{loading && <LoadingDots />}
                 </button>
@@ -195,7 +192,7 @@ const ProductBox: React.FC<Props> = ({
                       {({ open }) => (
                         <>
                         <Disclosure.Button className="flex w-full justify-between border-b border-b-blackpx-4 py-2 text-left text-sm font-medium focus:outline-none focus-visible:ring focus-visible:ring-opacity-75">
-                          <span>{ingredient.title}</span>
+                          <span className="text-lg">{ingredient.title}</span>
                           <ChevronUpIcon
                             className={`${
                               open ? 'rotate-180 transform' : ''
@@ -218,59 +215,75 @@ const ProductBox: React.FC<Props> = ({
       </div>
 
       {/* How We Use It */}
-      <div className='bg-shell-50 font-sans'>
-        <div className='px-3 py-6'>
-          <div className=''>
-            <span className='text-sm font-semibold font-sans'>How We Use It</span>
-            <h1 className='text-xl'>Morning and Night</h1>
-            <p className='text-sm'>Apply a few drops to clean, toned skin, focusing on areas that you feel need a bit of extra attention.</p>
+      <div className='bg-shell-50 py-12 font-sans'>
+        <Container>
+          <div className='relative h-96 w-full'>
+            <Image 
+              src="https://cdn.shopify.com/s/files/1/1704/8471/files/HowTo_Serum01_f66f7197-eb52-4d62-a719-6ceb42ab4ed2_588x.gif?v=1613750352"
+              layout="fill"
+              alt='how we use it image'
+              objectFit='cover'
+            />
+          </div>
+          <div className='py-8'>
+            <span className='text-sm font-sans'>How We Use It</span>
+            <h1 className='text-3xl'>Morning and Night</h1>
+            <p className='text-lg'>Apply a few drops to clean, toned skin, focusing on areas that you feel need a bit of extra attention.</p>
           </div>
           <hr className='my-3'/>
-          <div>
+          <div className='pt-4'>
             <span className='text-sm font-semibold'>Complete Your Routine</span>
-            <div className='mb-3'>
-              <span className='uppercase text-sm mb-2'>Before</span>
-              <div className='flex bg-white rounded-lg overflow-hidden'>
-                <div className='relative h-20 w-20'>
-                  <Image
-                    src='https://res.cloudinary.com/dinn28die/image/upload/v1671132334/cld-sample-5.jpg'
-                    alt='product image'
-                    layout='fill'
-                  />
+            <div className='flex overflow-scroll'>
+              {/* Refactor this.... */}
+              <div className='mt-2 w-8/12'>
+                <span className='uppercase text-sm mb-2'>Before</span>
+                <div className='flex flex-col bg-white overflow-hidden'>
+                  <div className='relative h-56 w-full'>
+                    <Image
+                      src='https://res.cloudinary.com/dinn28die/image/upload/v1673880959/NationalGeographic_2572187_square_m7geh4.jpg'
+                      alt='product image'
+                      layout='fill'
+                      objectFit='cover'
+                    />
+                  </div>
+                  <div className='flex flex-col p-4 h-24'>
+                    <p className='text-xs uppercase'>Image Skincare</p>
+                    <p className='text-sm'>Vital C Hydrating Facial Cleanser</p>
+                  </div>
                 </div>
-                <div className='flex flex-col justify-center px-3'>
-                  <p className='text-xs uppercase'>Image Skincare</p>
-                  <p className='text-sm font-semibold'>Vital C Hydrating Facial Cleanser</p>
+              </div>
+              <div className='mt-2 w-8/12'>
+                <span className='uppercase text-sm mb-2'>Before</span>
+                <div className='flex flex-col bg-white overflow-hidden'>
+                  <div className='relative h-56 w-full'>
+                    <Image
+                      src='https://res.cloudinary.com/dinn28die/image/upload/v1673880959/NationalGeographic_2572187_square_m7geh4.jpg'
+                      alt='product image'
+                      layout='fill'
+                      objectFit='cover'
+                    />
+                  </div>
+                  <div className='flex flex-col p-4 h-24'>
+                    <p className='text-xs uppercase'>Image Skincare</p>
+                    <p className='text-sm'>Vital C Hydrating Facial Cleanser</p>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className='mb-3'>
-              <span className='uppercase text-sm mb-2'>After</span>
-              <div className='flex bg-white rounded-lg overflow-hidden'>
-                <div className='relative h-20 w-20'>
-                  <Image
-                    src='https://res.cloudinary.com/dinn28die/image/upload/v1671132334/cld-sample-5.jpg'
-                    alt='product image'
-                    layout='fill'
-                  />
-                </div>
-                <div className='flex flex-col justify-center px-3'>
-                  <p className='text-xs uppercase'>Image Skincare</p>
-                  <p className='text-sm font-semibold'>Vital C Hydrating Facial Cleanser</p>
-                </div>
-              </div>
-            </div>
+            
           </div>
-        </div>
+        </Container>
       </div>
       {/* How We Use It */}
 
       {/* From the Treatment Room */}
-      <div className="bg-ocean-100 py-16 px-3 font-sans">
-        <div className='text-center text-white flex flex-col gap-4 max-w-2xl mx-auto '>
-          <span>• FROM THE TREATMENT ROOM •</span>
-          <p className='text-lg font-medium'>Apply with toner, or mix with your favorite facial oil for the complete balance of brightening and hydration. This anti-aging serum is also safe to use around the eyes.</p>
-        </div>
+      <div className="bg-other-neutral py-16 font-sans">
+        <Container>
+          <div className='text-center text-white flex flex-col gap-4 max-w-2xl mx-auto '>
+            <span className='text-sm'>• FROM THE TREATMENT ROOM •</span>
+            <p className='text-2xl font-medium'>Apply with toner, or mix with your favorite facial oil for the complete balance of brightening and hydration. This anti-aging serum is also safe to use around the eyes.</p>
+          </div>
+        </Container>
       </div>
       {/* From the Treatment Room End */}
     </React.Fragment>

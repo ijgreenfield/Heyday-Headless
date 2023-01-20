@@ -9,6 +9,7 @@ export interface OptionPickerProps {
   options?: Readonly<Array<string | undefined>>
   onChange?: React.ChangeEventHandler<HTMLSelectElement>
   selected?: string
+  className?: string
 }
 
 const OptionPicker: FC<OptionPickerProps> = ({
@@ -16,25 +17,17 @@ const OptionPicker: FC<OptionPickerProps> = ({
   options,
   onChange,
   selected,
+  className
 }) => {
   return (
-    <div className=''>
-      {/*<Label htmlFor={name}>{name}</Label>*/}
-      <Select id={name} onChange={onChange} value={selected}>
+    <div className={className}>
+      <select id={name} onChange={onChange} value={selected} className="border border-neutral-primary h-full w-full">
         {options?.map((option) => (
           <option value={option} key={option}>
             {option}
           </option>
         ))}
-        </Select>
-
-        {/*<div className='flex gap-3'>
-          {options?.map(option => (
-            <div key={option} className='border p-3 rounded-lg'>
-              {option}
-            </div>
-          ))}
-          </div>*/}
+      </select>
     </div>
   )
 }

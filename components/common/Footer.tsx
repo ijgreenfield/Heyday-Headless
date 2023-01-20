@@ -11,31 +11,31 @@ const Footer: FC = () => {
         },
         {
             name: "FAQ",
-            href: "/legal/service-product-policy"
+            href: "https://help.heydayskincare.com"
         },
         {
             name: "Franchising",
-            href: "/legal/service-product-policy"
+            href: "https://franchising.heydayskincare.com"
         },
         {
             name: "Locations",
-            href: "/legal/service-product-policy"
+            href: "/locations"
         },
         {
             name: "Membership",
-            href: "/legal/service-product-policy"
+            href: "/membership"
         },
         {
             name: "Careers",
-            href: "/legal/service-product-policy"
+            href: "https://heyday-skincare-careers.careerplug.com/jobs"
         },
         {
             name: "Gift Cards",
-            href: "/legal/service-product-policy"
+            href: "/product/gift-card"
         },
         {
             name: "Contact",
-            href: "/legal/service-product-policy"
+            href: "/contact"
         },
     ]
 
@@ -78,7 +78,7 @@ const Footer: FC = () => {
                     </div>
                 </Container>
             </div>
-            <div className="bg-neutral-primary text-white">
+            <div className="bg-other-neutral text-white">
                 <Container>
                     <div className='py-10 flex flex-col gap-y-8'>
                         <div>
