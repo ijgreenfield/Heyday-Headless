@@ -17,11 +17,23 @@
 
 @font-face {
   font-family: 'Cadiz';
+  font-weight: 400;
   src: 
     local('Cadiz'),
     url('../public/fonts/Cadiz/Cadiz_Variable_Upright_Web.woff')
 
 }
+
+@font-face {
+  font-family: 'Tobias Regular';
+  src: url('../public/fonts/Tobias/Tobias-Regular.woff');
+}
+
+@font-face {
+  font-family: 'Tobias SemiBold';
+  src: url('../public/fonts/Tobias/Tobias-SemiBold.woff');
+}
+
 
 :root {
   --primary: #ffffff;
