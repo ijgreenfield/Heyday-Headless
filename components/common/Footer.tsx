@@ -59,9 +59,9 @@ const Footer: FC = () => {
         <footer className="font-sans text-sm">
             <div className="border-t border-neutral-primary">
                 <Container>
-                    <div className="py-10">
-                        <div>
-                            <ul className='flex flex-row flex-wrap justify-between text-sm font-sans'>
+                    <div className="py-10 md:py-12 flex flex-col gap-y-8">
+                        <div className="md:w-1/3">
+                            <ul className='flex flex-row flex-wrap justify-between md:justify-start text-sm font-mono'>
                                 {primLinks.map(link => {
                                     const { href, name } = link
                                     return (
@@ -80,12 +80,12 @@ const Footer: FC = () => {
             </div>
             <div className="bg-other-neutral text-white">
                 <Container>
-                    <div className='py-10 flex flex-col gap-y-8'>
+                    <div className='py-10 flex flex-col md:flex-row md:justify-between gap-y-8'>
                         <div>
                             <span>Heyday Wellness LLC. All rights reserved 2023.</span>
                         </div>
                         <div>
-                            <ul className="flex flex-col gap-y-2">
+                            <ul className="flex flex-col md:flex-row gap-y-2 md:gap-x-6">
                                 {secLinks.map(link => {
                                     const { href, name } = link
                                     return (

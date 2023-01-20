@@ -10,6 +10,12 @@
 }
 
 @font-face {
+  font-family: 'Maison Neue Mono';
+  src: 
+    url('../public/fonts/MaisonNeue/MaisonNeueMono-Regular.woff2');
+}
+
+@font-face {
   font-family: 'Cadiz';
   src: 
     local('Cadiz'),

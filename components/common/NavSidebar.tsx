@@ -26,9 +26,9 @@ const NavSidebar: FC<Props> = ({ children, open = false, onClose }) => {
         },
       }}
       contentTransition={{
-        from: { transform: 'translateX(100%)' },
+        from: { transform: 'translateX(-100%)' },
         enter: { transform: 'translateX(0)' },
-        leave: { transform: 'translateX(100%)' },
+        leave: { transform: 'translateX(-100%)' },
       }}
     >
       <ModalCloseTarget>

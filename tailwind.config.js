@@ -13,7 +13,8 @@ module.exports = {
   theme: {
     fontFamily: {
       'sans': ['Maison Neue Book', 'sans'],
-      'serif': ['Playfair Display', 'serif']
+      'serif': ['Playfair Display', 'serif'],
+      'mono': ['Maison Neue Mono', 'mono']
     },
     maxWidth: {
       '1/2': '50%',

@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import React, { FC, useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Container, UserNav } from '@components/common'
+import { Container, NavSidebar, UserNav } from '@components/common'
 import { BuilderComponent, builder } from '@builder.io/react'
 import { useCart } from '@lib/shopify/storefront-data-hooks'
 import { jsx, Themed, useThemeUI } from 'theme-ui'
@@ -33,6 +33,7 @@ const Navbar: FC = () => {
     fetchContent()
   }, [cart?.lineItems])
 
+  const { displaySidebar, closeSidebar, toggleSidebar } = useUI()
   return (
     <>
       <BuilderComponent
@@ -42,18 +43,7 @@ const Navbar: FC = () => {
       />
       <header className='my-0 mx-auto relative bg-white border-b border-neutral-primary'>
         <Container>
-          <div className='hidden flex-1 justify-start'>
-            {navigationLinks?.map((link, index) => (
-              <div key={index} className='mr-8'>
-                <Link href={link.link}>
-                  {link.title}
-                </Link>
-              </div>
-            ))}
-          </div>
-
-
-          <div className='flex justify-between items-center bg-white py-4 relative'>
+          <div className='flex justify-between items-center bg-white py-4 md:py-6 relative'>
             <div className='absolute left-2/4 transform -translate-x-2/4'>
               <div className='flex items-center'>
                 {logo && logo.image && (
@@ -69,9 +59,25 @@ const Navbar: FC = () => {
               </div>
             </div>
 
-            <div className=''>
+            <div className='hidden md:flex gap-x-12 justify-start font-mono text-sm'>
+            {navigationLinks?.map((link, index) => (
+              <div key={index} className=''>
+                <Link href={link.link}>
+                  {link.title}
+                </Link>
+              </div>
+            ))}
+          </div>
+
+            <div className='md:hidden'>
               <div className='flex '>
-                <Bars2Icon className='h-6 w-6'/>
+                <Bars2Icon className='h-6 w-6' onClick={toggleSidebar}/>
+                <NavSidebar
+                  open={displaySidebar}
+                  onClose={closeSidebar}
+                >
+                  <p>hi</p>
+                </NavSidebar>
               </div>
             </div>
             <div className=''>
